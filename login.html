@@ -1,0 +1,49 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+    <link rel="stylesheet" type="text/css" href="less/login.less">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>  
+  <body>
+    <div class="login-box">
+      <form>
+        <div class="form-group input-effect">
+          <input class="info" type="text" placeholder="">
+          <label>First Name</label>
+          <span class="focus-border"></span>
+        </div>
+        <div class="form-group input-effect">
+          <input class="info" type="text" placeholder="">
+          <label>Last Name</label>
+          <span class="focus-border"></span>
+        </div>
+        <div class="form-group input-effect">
+          <input class="info" type="password" placeholder="">
+          <label>Password</label>
+          <span class="focus-border"></span>
+        </div>
+        <div class="form-group">
+          <button class="btn" type="submit">Log In</button>
+          <a href="#"><small class="tips_color">forgot Password?</small></a>
+        </div>
+
+      </form>
+    </div>
+  <!-- JS -->
+  <script>
+    $(window).load(function () {
+      $(".form-group input").val("");
+      $(".input-effect input").focusout(function () {
+        if ($(this).val() != "") {
+          $(this).addClass("has-content");
+        } else {
+          $(this).removeClass("has-content");
+        }
+      })
+    });
+  </script>
+  </body>
+</html>

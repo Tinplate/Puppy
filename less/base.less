@@ -1,0 +1,250 @@
+@charset "utf-8";
+/* Preset CSS */
+//font
+@body-font: normal 1em 'Microsoft YaHei', Arial, sans-serif;
+//color
+@a-link: #4568dc;
+@a-hover: darken(@a-link, 100%);
+//#000
+@text-color: #424242;
+@background-color: #fafafa;
+//#e6e6e6
+@danger: #d9534f;
+@danger-hover: lighten(@danger, 10%);
+//#e27c79;
+@main-color: #ab68da;
+@main-hover: lighten(@main-color, 10%);
+//#c291e4
+@success: #5cb85c;
+@success-hover: lighten(@success, 10%);
+//#80c780
+@warning: #f0ad4e;
+@warning-hover: lighten(@warning, 10%);
+//#f4c37d
+@default: #ccc;
+@default-hover: lighten(@default, 10%);
+//path
+@img-path: 'https://raw.githubusercontent.com/Tinplate/images/master/';
+//lenght
+@m: 15px;
+@selector:body, dl, dd, ul, ol, p, form;
+
+/*----- BASE CSS ------*/
+/* Reset CSS */
+*:focus { outline: none; }
+html {
+  min-width: 1300px;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+h1, h2, h3, h4, h5, h6 { margin: 0; }
+h1 { margin-top: 10px; }
+@{selector} {
+  margin: 0;
+  padding: 0;
+  font: @body-font;
+}
+ol, dl, ul { list-style: none; }
+a {
+  display: inline-block;
+  text-decoration: none;
+  outline: none;
+  color: @a-link;
+  &:hover {
+    color: @a-hover;
+  }
+}
+a:-webkit-any-link {
+  display: inline-block;
+  text-decoration: none;
+  outline: none;
+  color: @a-link;
+  &:hover {
+    color: @a-hover;
+  }
+}
+img { border: none; }
+input, button, select, textarea {
+  margin: 0;
+  vertical-align: middle;
+  font: @body-font;
+}
+input[type="checkbox"], input[type="radio"] {
+  width: 16px;
+  height: 16px;
+}
+button, html input[type="button"], input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+button::-moz-focus-inner, input::-moz-focus-inner {
+  padding: 0;
+  border: none;
+}
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+  color: rgb(102, 102, 102);
+  background-color: rgb(255, 255, 255);
+  background-image: none;
+}
+//table
+table {
+  width: 100%;
+  padding: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  .border-radius();
+  .border();
+
+  thead, tbody, tfoot {
+    vertical-align: middle;
+    .text-center;
+  }
+  td, th {
+    padding: 0;
+    font-weight: normal;
+    vertical-align: middle
+  }
+}
+/* //Reset CSS */
+/*----- // BASE CSS ------*/
+/*----- COMMON CSS ------*/
+/* Common CSS */
+body {
+  min-width: 1300px;
+  width: 100%;
+  color: @text-color;
+  line-height: 1.5em;
+  letter-spacing: .05em;
+  background-color: @background-color;
+}
+//float
+.pull-left { float: left; }
+.pull-right { float: right; }
+//dispay
+.block { display: block; }
+.inline-block { display: inline-block; }
+.hidden { display: none; }
+//color
+.main_color, a.main_color { color: @main-color; }
+.reverse_color, a.reverse_color { color: @a-link; }
+.state_success, a.state_success { color: @success; }
+.state_danger, a.state_danger { color: @danger; }
+.state_warning, a.state_warning { color: @warning; }
+.text_color, a.text_color {
+  color: @text-color;
+  &:hover {
+    color: @main-color;
+  }
+}
+.tips_color, a.tips_color { color: @default; }
+//text
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-center { text-align: center; }
+.border(@width:1px, @style:solid, @color:@default-hover) { border: @arguments; }
+.border-red, input.border-red { .border(@color: @danger) }
+.border-radius (@radius:.25em) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+.box-show(@h:5px, @v:5px, @b:5px, @color:@default) {
+  -webkit-box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  box-shadow: @arguments;
+}
+//btn
+.btn, a.btn {
+  .inline-block;
+  height: 36px;
+  padding: 0 1.25em;
+  color: #fff;
+  line-height: 34px;
+  .text-center;
+  .border-radius();
+  .border(@color: @main-color);
+  background-color: @main-color;
+  cursor: pointer;
+  &:hover {
+    color: #fff;
+    background-color: @main-hover;
+  }
+}
+button.btn {
+  &:extend(.btn, a.btn);
+  height: 38px;
+  line-height: 36px;
+}
+.btn_small {
+  height: 30px;
+  padding: 0 .625em;
+  font-size: 14px;
+  line-height: 30px;
+}
+.btn_border, a.btn_border, button.btn_border {
+  color: @main-color;
+  .border(@color: @main-color);
+  background-color: #fff;
+  &:hover {
+    &:extend(.btn:hover);
+  }
+}
+.btn_add, a.btn_add, button.btn_add {
+  .border(@color: @success);
+  background: @success;
+  &:hover {
+    background-color: @success-hover;
+  }
+}
+.btn_del, a.btn_del, button.btn_del {
+  background: @danger;
+  .border(@color: @danger);
+  &:hover {
+    background-color: @danger-hover;
+  }
+}
+//input
+input, input[type="text"], input[type="password"], textarea {
+  padding: 0 .5em;
+  outline: none;
+  line-height: 36px;
+  .border-radius();
+  .border();
+}
+select {
+  &:extend(input);
+  height: 38px;
+}
+
+//msg
+.msg_error {
+  .inline-block;
+  margin-left: @m;
+  padding-left: 20px;
+  color: @danger;
+  background: url("@{img-path}msg_error.png") no-repeat left center;
+  .hidden;
+}
+.msg_success {
+  &:extend(.msg_error);
+  color: #5cb85c;
+  background: url("@{img-path}msg_succ.png") no-repeat left center;
+}
+.msg_waiting {
+  &:extend(.msg_error);
+  color: @default-hover;
+  background: url("@{img-path}msg_wait.png") no-repeat left center;
+}
+/* .clearfix, .clear */
+.clearfix{
+  zoom: 1;
+  clear: both;
+  &::after {
+    content: ".";
+    .block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+/*----- // COMMON CSS ------*/

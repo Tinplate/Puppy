@@ -1,0 +1,102 @@
+@import "base.less";
+//page css
+body {
+  background-color: #5fadf3;
+}
+
+.login-box {
+  width: 700px;
+  min-height: 400px;
+  margin: 10em auto;
+  .border-radius();
+  .box-show(@color: darken( #5fadf3,20%));
+  background: #fff url("@{img-path}box-bg.png") no-repeat left center;
+  form{
+    width:400px;
+    padding-top: @m*4;
+    padding-left: 250px;
+    .form-group {
+      position: relative;
+      .pull-left;
+      .text-left;
+      width: 100%;
+      margin: 10px @m 5px;
+      line-height: 37px;
+      &:last-child{
+       margin-top: @m*2;
+      }
+      input[type="text"],input[type="password"] {
+        position: relative;
+        z-index: 1;
+        box-sizing: border-box;
+        width: 100%;
+        height: 50px;
+        color: #333;
+        letter-spacing: 1px;
+        .border-radius(0);
+        border: none;
+        border-bottom: 1px solid @default;
+      }
+      button.btn{
+        width: 180px;
+        height: 45px;
+        margin-right: @m*2;
+        .border-radius(25px);
+      }
+      .tips_color:hover{
+        color: @main-color;
+      }
+    }
+  }
+}
+//
+.info {
+  padding: 4px 0;
+  background-color: transparent;
+}
+
+.info ~ .focus-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: @main-color;
+  -webkit-transition:.4s;
+     -moz-transition:.4s;
+       -o-transition:.4s;
+          transition:.4s;
+}
+
+.info:focus ~ .focus-border,
+.has-content.info ~ .focus-border {
+  width: 100%;
+  -webkit-transition:.4s;
+     -moz-transition:.4s;
+       -o-transition:.4s;
+          transition:.4s;
+}
+
+.info ~ label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  color: @default;
+  letter-spacing: .5px;
+  -webkit-transition:.3s;
+     -moz-transition:.3s;
+       -o-transition:.3s;
+          transition:.3s;
+}
+
+.info:focus ~ label, .has-content.info ~ label {
+  top: -16px;
+  color: @main-color;
+  font-size: 12px;
+  -webkit-transition:.3s;
+     -moz-transition:.3s;
+       -o-transition:.3s;
+          transition:.3s;
+}
